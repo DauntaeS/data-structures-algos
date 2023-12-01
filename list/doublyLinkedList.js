@@ -113,11 +113,13 @@ class doublyLinkedList {
     if (index === 0) return this.shift(index);
     if (index === this.length - 1) return this.pop(index);
 
-    let prevNode = this.get(index - 1);
-    let removed = prevNode.next;
-    prevNode.next = removed.next;
+    let removedNode = this.get(index);
+    removedNode.prev.next = removedNode.next;
+    removedNode.next.prev = removedNode.prev;
+    removedNode.next = null;
+    removedNode.prev = null;
     this.length--;
-    return removed;
+    return removedNode;
   }
 }
 let list = new doublyLinkedList();
