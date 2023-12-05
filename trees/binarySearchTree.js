@@ -53,6 +53,31 @@ class BST {
     if (!found) return undefined;
     return current;
   }
+  BFS() {
+    let data = [],
+      queue = [],
+      node = this.root;
+
+    queue.push(this.root);
+    while (queue.length) {
+      node = queue.shift();
+      data.push(node);
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+    return data;
+  }
+  DFSPreOrder() {
+    let data = [],
+      curr = this.root;
+    function traverse(node) {
+      data.push(node);
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+    }
+    traverse(curr);
+    return data;
+  }
 }
 
 let tree = new BST();
