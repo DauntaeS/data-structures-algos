@@ -71,13 +71,25 @@ class BST {
     let data = [],
       curr = this.root;
     function traverse(node) {
-      data.push(node);
+      data.push(node.value);
       if (node.left) traverse(node.left);
       if (node.right) traverse(node.right);
     }
     traverse(curr);
     return data;
   }
+  DFSPostOrder() {
+    let data = [],
+      curr = this.root;
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      data.push(node.value);
+      if (node.right) traverse(node.right);
+    }
+    traverse(curr);
+    return data;
+  }
+  DFSInOrder() {}
 }
 
 let tree = new BST();
