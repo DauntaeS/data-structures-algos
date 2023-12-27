@@ -63,11 +63,13 @@ class Graph {
     let queue = [start];
     let result = [];
     let visited = {};
+    visited[start] = true;
     let currvertex;
 
     while (queue.length) {
       currvertex = queue.shift();
       result.push(currvertex);
+
       this.adjacencyList[currvertex].forEach((neighbor) => {
         if (!visited[neighbor]) {
           visited[neighbor] = true;
